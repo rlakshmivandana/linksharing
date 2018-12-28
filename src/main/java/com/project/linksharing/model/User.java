@@ -17,7 +17,6 @@ public class User extends Auditable {
     private String password;
     private String firstName;
     private String lastName;
-    private Byte photo;
     private Boolean admin;
     private Boolean active;
 
@@ -71,14 +70,6 @@ public class User extends Auditable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Byte getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Byte photo) {
-        this.photo = photo;
     }
 
     public Boolean getAdmin() {
