@@ -1,11 +1,14 @@
-package com.sagarandcompany.dockerdemo;
+package com.project.linksharing.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseDTO {
     private Boolean status;
     private String message;
     private Object data;
 
-    public  ResponseDTO(){}
+    public ResponseDTO(){}
 
     public ResponseDTO(Boolean status, String message) {
         this.status = status;

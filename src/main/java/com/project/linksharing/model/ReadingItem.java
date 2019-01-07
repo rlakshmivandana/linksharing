@@ -2,22 +2,27 @@ package com.project.linksharing.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ReadingItem {
 
     @Id
-    private Long readingItemId;
+    private Long id;
+
+    @OneToOne
     private Resource resource;
+
+    @OneToOne
     private User user;
     private Boolean isRead;
 
-    public Long getReadingItemId() {
-        return readingItemId;
+    public Long getId() {
+        return id;
     }
 
-    public void setReadingItemId(Long readingItemId) {
-        this.readingItemId = readingItemId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Resource getResource() {

@@ -1,35 +1,37 @@
 package com.project.linksharing.model;
 
-import com.project.linksharing.util.Visibility;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 @Entity
 public class User extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
     private String email;
     private String username;
     private String password;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name="last_name")
     private String lastName;
+    private String photo;
     private Boolean admin;
     private Boolean active;
 
-    public User() {
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Topic> topics = new ArrayList<Topic>();
 
+    public Long getId() {
+        return id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -72,6 +74,14 @@ public class User extends Auditable {
         this.lastName = lastName;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public Boolean getAdmin() {
         return admin;
     }
@@ -88,5 +98,11 @@ public class User extends Auditable {
         this.active = active;
     }
 
+    public List<Topic> getTopics() {
+        return topics;
+    }
 
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
+    }
 }

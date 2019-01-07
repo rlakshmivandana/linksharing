@@ -2,29 +2,32 @@ package com.project.linksharing.model;
 
 import com.project.linksharing.util.Visibility;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.sql.Date;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Topic {
+public class Topic  extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long topicId;
+    private Long id;
+
+    @Column(unique = true)
     private String name;
-    private User createdBy;
-    private Date lastUpdated;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Resource> resources=new ArrayList<> ();
+
+    @Enumerated(EnumType.STRING)
     private Visibility visibility;
 
-    public Long getTopicId() {
-        return topicId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTopicId(Long topicId) {
-        this.topicId = topicId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -35,20 +38,12 @@ public class Topic {
         this.name = name;
     }
 
-    public User getCreatedBy() {
-        return createdBy;
+    public List<Resource> getResources() {
+        return resources;
     }
 
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
     }
 
     public Visibility getVisibility() {

@@ -1,26 +1,27 @@
 package com.project.linksharing.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ResourceRating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resourceRatingId;
+    private Long id;
+
+    @OneToOne
     private Resource resource;
+
+    @OneToOne
     private User user;
     private Integer score;
 
-    public Long getResourceRatingId() {
-        return resourceRatingId;
+    public Long getId() {
+        return id;
     }
 
-    public void setResourceRatingId(Long resourceRatingId) {
-        this.resourceRatingId = resourceRatingId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Resource getResource() {

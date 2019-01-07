@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
 </head>
-<body>
-$END$
-</body>
+<div class="container">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.apkmirror.com/wp-content/uploads/2017/02/589d331f859a6-384x384.png" class="img-responsive" alt="Chania" width="50" height="100">
+                </a>
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">LinkSharingApplication</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" th:href="@{/home/}">Home</a></li>
+                    <li><a href="#" th:href="@{/login/}">Login</a></li>
+                    <li><a href="#" th:href="@{/user/register}">Singup</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--    <div class="oneFifth">
+        <div class="userPanel width200px">
+            <div class="userMenu">
+                <ul>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">Admin</a></li>
+                    <li><a href="">Inbox</a></li>
+                    <li><a href="">UserProfile</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>-->
+
+    <h3>User Details</h3>
+   <select class="form-control" id="topic">
+       <option>-Select-</option>
+       <option th:each="topic:${user.topics}"
+       th:text="${topic.name}"
+        th:value="${topic.id}"
+       />
+
+   </select>
+<br/>
+<br/>
+    <select class="form-control" name="seriousness" id="seriousness">
+        <option>-Select-</option>
+        <option value="CASUAL">CASUAL</option>
+        <option value="VERY_SERIOUS">VERY_SERIOUS</option>
+        <option value="SERIOUS">SERIOUS</option>
+
+
+
+    </select>
+
+    <button onclick="subscription()">Subscribe</button>
+
+    <!--<table class="table">-->
+      <!--<tbody>-->
+        <!--<tr th:each="usr:${user}">-->
+            <!--<td>UserName:</td>-->
+            <!--<td th:text="${usr.username}"></td>-->
+            <!--<td>Email:</td>-->
+            <!--<td th:text="${usr.email}"></td>-->
+            <!--<td>FirstName:</td>-->
+            <!--<td th:text="${usr.firstName}"></td>-->
+            <!--<td>LastName:</td>-->
+            <!--<td th:text="${usr.lastName}"></td>-->
+            <!--<td><a href="#" th:href="@{/user/register}"><i class="far fa-edit"></i></a></td>-->
+            <!--<td><a href="#" th:href="@{/user/register}"><i class="fas fa-trash-alt"></i></a></td>-->
+
+
+        <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+
+    <h3>Topic Details</h3>
+
+    <!--<div th:each="topic:${user.topics}">-->
+      <!--TopicName: <span th:text="${topic.name}"></span><br><br><hr>-->
+    <!--</div>-->
+
+
+<script>
+    function subscription(){
+        var topicId=$("#topic").val();
+        var seriousness=$("#seriousness").val();
+        var jsonData={
+            "topic.id":topicId
+   ,
+            "seriousness":seriousness
+        }
+        $.post("/subscription/save",jsonData,function(response){
+            alert(response.message);
+        });
+    }
+</script>
+</div>
+
 </html>

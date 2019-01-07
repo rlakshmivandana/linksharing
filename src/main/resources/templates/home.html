@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
-$END$
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <a class="navbar-brand" href="#">
+                <img src="https://www.apkmirror.com/wp-content/uploads/2017/02/589d331f859a6-384x384.png" class="img-responsive" alt="Chania" width="50" height="100">
+            </a>
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">LinkSharingApplication</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" th:href="@{/home/}">Home</a></li>
+                <li><a href="#" th:href="@{/login/}">Login</a></li>
+                <li><a href="#" th:href="@{/user/register}">Singup</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container"><br>
+    <h1 class="mt-4">Link Sharing Application</h1><br>
+    <p>LinkSharing Web Application is a MVC based web application for making users to register to a system and share useful links and documents. It is a system in which user can subscribe or unsubscribe to various topics and can also create his/her own topics to be shared amongst other users.
+        Admin is responsible for handling all the administrative tasks such as deleting a user or creating/deleting a topic or a resource.User is casual user who can register into the system and can subscribe to topics. He can add resources to the topic he is subscribed to.
+    </p>
+</div>
+<!-- /.container -->
+<!--<div class="container">
+    <h1>LinkSharing</h1>
+    <a th:href="@{/login/}" >Login</a>
+    <a th:href="@{/user/register}">Singup</a>
+</div>-->
 </body>
 </html>

@@ -1,5 +1,6 @@
-package com.sagarandcompany.dockerdemo;
+package com.project.linksharing.util;
 
+import com.project.linksharing.model.ResponseDTO;
 import org.springframework.context.MessageSource;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -21,6 +22,7 @@ public class UtilValidator {
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setStatus(false);
         responseDTO.setData(errors);
+        responseDTO.setMessage ( "Something Went Wrong.Please try again" );
         return responseDTO;
     }
 }

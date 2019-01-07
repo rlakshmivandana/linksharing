@@ -1,18 +1,39 @@
-package com.project.linksharing.model;
+package com.project.linksharing.util;
 
-import javax.persistence.*;
-import java.sql.Date;
+import com.project.linksharing.model.Topic;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type",discriminatorType = DiscriminatorType.STRING)
-public abstract class Resource {
+public class ResourceDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
+    private Topic topic;
+    private String url;
+    private String filePath;
 
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 
     public Long getId() {
         return id;

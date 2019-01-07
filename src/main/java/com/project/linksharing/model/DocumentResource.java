@@ -1,26 +1,12 @@
 package com.project.linksharing.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class DocumentResource {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long documentResourceId;
+@DiscriminatorValue( "DocumentResource" )
+public class DocumentResource extends Resource {
 
     private String filePath;
-
-    public Long getDocumentResourceId() {
-        return documentResourceId;
-    }
-
-    public void setDocumentResourceId(Long documentResourceId) {
-        this.documentResourceId = documentResourceId;
-    }
 
     public String getFilePath() {
         return filePath;

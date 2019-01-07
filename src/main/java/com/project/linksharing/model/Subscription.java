@@ -2,10 +2,7 @@ package com.project.linksharing.model;
 
 import com.project.linksharing.util.Seriousness;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -13,18 +10,31 @@ public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long subscriptionId;
-    private Topic topic;
-    private User user;
-    private Seriousness seriousness;
-    private Date dateCreated;
+    private Long id;
 
-    public Long getSubscriptionId() {
-        return subscriptionId;
+    @OneToOne
+    private Topic topic;
+
+    @OneToOne
+    private User  user;
+
+    @Enumerated(EnumType.STRING)
+    private Seriousness seriousness;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setSubscriptionId(Long subscriptionId) {
-        this.subscriptionId = subscriptionId;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Topic getTopic() {
@@ -35,14 +45,6 @@ public class Subscription {
         this.topic = topic;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public Seriousness getSeriousness() {
         return seriousness;
     }
@@ -50,12 +52,5 @@ public class Subscription {
     public void setSeriousness(Seriousness seriousness) {
         this.seriousness = seriousness;
     }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
 }
+
